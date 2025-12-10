@@ -9,9 +9,39 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as Test5RouteImport } from './routes/test5'
+import { Route as Test4RouteImport } from './routes/test4'
+import { Route as Test3RouteImport } from './routes/test3'
+import { Route as Test2RouteImport } from './routes/test2'
+import { Route as TestRouteImport } from './routes/test'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
+const Test5Route = Test5RouteImport.update({
+  id: '/test5',
+  path: '/test5',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Test4Route = Test4RouteImport.update({
+  id: '/test4',
+  path: '/test4',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Test3Route = Test3RouteImport.update({
+  id: '/test3',
+  path: '/test3',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Test2Route = Test2RouteImport.update({
+  id: '/test2',
+  path: '/test2',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TestRoute = TestRouteImport.update({
+  id: '/test',
+  path: '/test',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
@@ -26,31 +56,101 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/test': typeof TestRoute
+  '/test2': typeof Test2Route
+  '/test3': typeof Test3Route
+  '/test4': typeof Test4Route
+  '/test5': typeof Test5Route
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/test': typeof TestRoute
+  '/test2': typeof Test2Route
+  '/test3': typeof Test3Route
+  '/test4': typeof Test4Route
+  '/test5': typeof Test5Route
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/test': typeof TestRoute
+  '/test2': typeof Test2Route
+  '/test3': typeof Test3Route
+  '/test4': typeof Test4Route
+  '/test5': typeof Test5Route
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/test'
+    | '/test2'
+    | '/test3'
+    | '/test4'
+    | '/test5'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about'
-  id: '__root__' | '/' | '/about'
+  to: '/' | '/about' | '/test' | '/test2' | '/test3' | '/test4' | '/test5'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/test'
+    | '/test2'
+    | '/test3'
+    | '/test4'
+    | '/test5'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  TestRoute: typeof TestRoute
+  Test2Route: typeof Test2Route
+  Test3Route: typeof Test3Route
+  Test4Route: typeof Test4Route
+  Test5Route: typeof Test5Route
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/test5': {
+      id: '/test5'
+      path: '/test5'
+      fullPath: '/test5'
+      preLoaderRoute: typeof Test5RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/test4': {
+      id: '/test4'
+      path: '/test4'
+      fullPath: '/test4'
+      preLoaderRoute: typeof Test4RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/test3': {
+      id: '/test3'
+      path: '/test3'
+      fullPath: '/test3'
+      preLoaderRoute: typeof Test3RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/test2': {
+      id: '/test2'
+      path: '/test2'
+      fullPath: '/test2'
+      preLoaderRoute: typeof Test2RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/test': {
+      id: '/test'
+      path: '/test'
+      fullPath: '/test'
+      preLoaderRoute: typeof TestRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
@@ -71,6 +171,11 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  TestRoute: TestRoute,
+  Test2Route: Test2Route,
+  Test3Route: Test3Route,
+  Test4Route: Test4Route,
+  Test5Route: Test5Route,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
